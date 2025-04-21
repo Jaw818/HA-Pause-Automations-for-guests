@@ -1,0 +1,97 @@
+type: vertical-stack
+cards:
+  - type: custom:popup-card
+    entity: input_boolean.friends
+    title: Friends
+    dismissable: true
+    card:
+      type: vertical-stack
+      cards:
+        - type: markdown
+          content: >-
+            <center><h1>Yay, you have friends! And they are coming to
+            visit!</h1>
+
+            Completing this form will prevent automations from running while
+            they are here. Preventing lights from turning off and other routine
+            things.
+          card_mod:
+            style: |
+              :host {
+               ha-card {
+               border-width: 0px !important;
+               background: none
+              }
+        - type: conditional
+          conditions:
+            - condition: state
+              entity: input_boolean.friends
+              state: "on"
+          card:
+            type: tile
+            entity: input_datetime.what_time_are_friends_coming
+            features_position: bottom
+            vertical: true
+            grid_options:
+              columns: 12
+              rows: 1
+            show_entity_picture: false
+            visibility:
+              - condition: state
+                entity: input_boolean.friends
+                state: "on"
+            card_mod:
+              style: |
+                :host {
+                 ha-card {
+                 border-width: 0px !important;
+                 background: none
+                }
+        - type: conditional
+          conditions:
+            - condition: state
+              entity: input_boolean.friends
+              state: "off"
+          card:
+            type: custom:mushroom-entity-card
+            entity: input_boolean.friends
+            name: This Must be On
+            icon: fas:people-roof
+            icon_color: red
+            layout: vertical
+            fill_container: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: toggle
+            double_tap_action:
+              action: more-info
+            card_mod:
+              style: |
+                :host {
+                 ha-card {
+                 border-width: 0px !important;
+                 background: none
+                }
+  - type: custom:popup-card
+    entity: input_button.friends_button
+    title: Friends
+    dismissable: true
+    card:
+      type: markdown
+      content: <h1><center>Are Friends Coming Over?
+      text_only: true
+    right_button: "No"
+    left_button: "Yes"
+    target:
+      device_id: dd902a1fafdfbdb69d60722ba32aa964
+    left_button_action:
+      service: browser_mod.more_info
+      data:
+        large: false
+        ignore_popup_card: false
+        entity: input_boolean.friends
+    right_button_action:
+      service: browser_mod.popup
+      data:
+        content: <h1> <center>Lame
