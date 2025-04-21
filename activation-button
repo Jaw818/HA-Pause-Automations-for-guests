@@ -1,0 +1,31 @@
+type: custom:mushroom-entity-card
+entity: input_button.friends_button
+layout: vertical
+primary_info: none
+secondary_info: none
+icon_type: icon
+tap_action:
+  action: more-info
+hold_action:
+  action: more-info
+double_tap_action:
+  action: more-info
+fill_container: false
+icon_color: white
+icon: fas:people-roof
+card_mod:
+  style:
+    mushroom-shape-icon$: |
+      .shape {
+        --shape-color: transparent !important;
+      }
+    .: |
+      ha-card {
+       background-color: transparent;
+       border-color: transparent;
+       icon-size: 50px;
+       }
+        ha-state-icon {
+        --icon-symbol-size: 50px;
+        --icon-background: transparent
+      }
