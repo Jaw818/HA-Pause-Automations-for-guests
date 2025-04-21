@@ -1,0 +1,16 @@
+alias: Forgot to turn friends off
+description: ""
+triggers:
+  - trigger: time
+    at: "04:00:00"
+conditions:
+  - condition: state
+    entity_id: input_boolean.friends
+    state: "on"
+actions:
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.friends
+mode: single
