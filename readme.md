@@ -64,26 +64,28 @@ This automation resets the guest mode **at 4 AM**, just in case.
 ## 🖼️ Step 2: The Card UI
 
 Okay, full honesty—I didn’t go wild with styling here. It’s built to *work*, not to *win beauty contests*.
-
+--
 ### 🎯 Activation Button  
 ![activation-button](https://github.com/user-attachments/assets/9f826bc5-3797-4fab-98eb-6ad54aff3a6a)
-Used to open the pop-up for setting guest options:  
-[Pop-up Activation Button](https://github.com/Jaw818/HA-Pause-Automations-for-guests/blob/main/activation-button)
 
+Used to open the pop-up for setting guest options: [Pop-up Activation Button](https://github.com/Jaw818/HA-Pause-Automations-for-guests/blob/main/activation-button)
 I place this button among others in a row on my main dashboard for quick access.
-![activation-button row](https://github.com/user-attachments/assets/0c33e978-bbe8-400a-9045-adfc4d10178f)
 
+![activation-button row](https://github.com/user-attachments/assets/0c33e978-bbe8-400a-9045-adfc4d10178f)
+--
 ### 💬 Pop-Up UI  
 Here’s the actual pop-up card that shows the input fields:  
 [Popup-card](https://github.com/Jaw818/HA-Pause-Automations-for-guests/blob/main/Popup-card)
+
 ![Friends coming over](https://github.com/user-attachments/assets/6f805e66-c1ba-4ccb-9252-1586f151c1b3)
 ![Yay](https://github.com/user-attachments/assets/b9270975-a22f-4644-88ae-46b34a9aad4b)
-
+--
 ### 🟩 Conditional Tile  
 A slick [tile card](https://github.com/Jaw818/HA-Pause-Automations-for-guests/blob/main/conditional-tile) shows up **only when `friends` is ON**—just tap it to turn guest mode off easily.
 
----![frieends](https://github.com/user-attachments/assets/fe77fcee-03df-4e19-8cbf-8768c9dda6eb)
+![frieends](https://github.com/user-attachments/assets/fe77fcee-03df-4e19-8cbf-8768c9dda6eb)
 
+---
 
 ## 💡 Wrapping Up
 
