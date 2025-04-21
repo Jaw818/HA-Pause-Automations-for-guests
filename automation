@@ -1,0 +1,88 @@
+alias: Friends Coming Over - Evening
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - input_boolean.friends
+    to: "on"
+conditions: []
+actions:
+  - wait_for_trigger:
+      - trigger: time
+        at:
+          entity_id: input_datetime.what_time_are_friends_coming
+          offset: "-01:00:00"
+  - action: automation.turn_off
+    metadata: {}
+    data:
+      stop_actions: true
+    target:
+      entity_id:
+        - <Insert automations you would like to disable>
+  - if:
+      - condition: or
+        conditions:
+          - condition: and
+            conditions:
+              - condition: sun
+                after: sunset
+                after_offset: "-01:00:00"
+              - condition: or
+                conditions:
+                  - condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: weather.forecast_home
+                        state: exceptional
+                  - condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: weather.forecast_home
+                        state: sunny
+                  - condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: weather.forecast_home
+                        state: windy
+    then:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_pct: 100
+          kelvin: 6500
+        target:
+          entity_id:
+            - <Insert Outdoor Lights you would like to come on>
+    else:
+      - wait_for_trigger:
+          - trigger: sun
+            event: sunset
+            offset: "-00:30:00"
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_pct: 100
+          kelvin: 6500
+        target:
+          entity_id:
+            - <Insert Outdoor Lights you would like to come on>
+  - wait_for_trigger:
+      - trigger: time
+        at:
+          entity_id: input_datetime.what_time_are_friends_coming
+          offset: "-00:30:00"
+  - action: light.turn_on
+    metadata: {}
+    data:
+      kelvin: 2000
+      brightness_pct: 10
+    target:
+      entity_id: 
+		- <insert any additional light entities you would like on, such as an entry way light>
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - <insert any additional switch entities you would like on, such as an entry way light>
+mode: single
