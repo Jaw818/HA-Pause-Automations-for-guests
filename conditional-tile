@@ -1,0 +1,18 @@
+type: tile
+entity: input_boolean.friends
+features_position: bottom
+vertical: false
+visibility:
+  - condition: state
+    entity: input_boolean.friends
+    state: "on"
+grid_options:
+  columns: 12
+  rows: 1
+card_mod:
+  style: |
+    :host {
+     ha-card {
+     border-width: 0px !important;
+     background: none
+    }
